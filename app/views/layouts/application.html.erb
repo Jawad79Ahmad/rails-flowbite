@@ -11,6 +11,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: 'layouts/navbar' %>
+    <%= render partial: 'layouts/sidebar' %>
+
+    <div class="p-2 sm:ml-64">
+      <div class='p-2 mt-14'>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
