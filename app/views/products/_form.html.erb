@@ -1,0 +1,33 @@
+<div class="flex flex-col justify-center my-auto pb-6 px-4 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-600">
+  <%= form_with(model: product, html: { class: 'space-y-2 md:space-y-4' }) do |f| %>
+    <% if product.errors.any? %>
+      <%= render partial: '/layouts/components/error_messages', locals: { resource: product } %>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name, class: 'block mb-2 text-gray-900 dark:text-white' %>
+      <%= f.text_field :name, autofocus: true, autocomplete: 'off', class: 'bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :category_id, class: 'block mb-2 text-gray-900 dark:text-white' %>
+      <%= f.select(:category_id, @categories.map { |cat| [cat.name, cat.id] }, { include_blank: 'Select Category' }, { class: 'bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' } ) %>
+    </div>
+
+    <div class='flex space-x-2'>
+      <div class="field w-1/2">
+        <%= f.label :quantity, class: 'block mb-2 text-gray-900 dark:text-white' %>
+        <%= f.number_field :quantity, autofocus: true, autocomplete: 'off', class: 'bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' %>
+      </div>
+
+      <div class="field w-1/2">
+        <%= f.label :price, class: 'block mb-2 text-gray-900 dark:text-white' %>
+        <%= f.number_field :price, autofocus: true, autocomplete: 'off', class: 'bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit class: 'cursor-pointer w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' %>
+    </div>
+  <% end %>
+</div>
