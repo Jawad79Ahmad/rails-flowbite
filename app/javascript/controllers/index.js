@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import ThemeToggleController from "./theme_toggle_controller"
 application.register("theme_toggle", ThemeToggleController)
+
+import FlashNoticeController from "./flash_notice_controller"
+application.register("flash_notice", FlashNoticeController)
