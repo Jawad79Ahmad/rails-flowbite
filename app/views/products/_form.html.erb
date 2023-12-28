@@ -1,8 +1,6 @@
 <div class="flex flex-col justify-center my-auto pb-6 px-4 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-600">
   <%= form_with(model: product, html: { class: 'space-y-2 md:space-y-4' }) do |f| %>
-    <% if product.errors.any? %>
-      <%= render partial: '/layouts/components/error_messages', locals: { resource: product } %>
-    <% end %>
+    <%= render partial: '/layouts/components/error_messages', locals: { resource: product } %>
 
     <div class="field">
       <%= f.label :name, class: 'block mb-2 text-gray-900 dark:text-white' %>
