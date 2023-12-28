@@ -1,0 +1,6 @@
+<!-- Breadcrumb -->
+<%= render partial: '/layouts/components/breadcrumb', locals: { url_data: [{ page_link: root_path, page_name: 'Home' }, { page_link: products_path, page_name: 'Products' }], current_page: 'New' } %>
+
+<div class='my-4'></div>
+
+<%= render "form", product: @product %>

@@ -1,0 +1,82 @@
+<!-- Breadcrumb -->
+<%= render partial: '/layouts/components/breadcrumb', locals: { url_data: [{ page_link: root_path, page_name: 'Home' }, { page_link: products_path, page_name: 'Products' }], current_page: 'Index' } %>
+
+<div class='flex justify-between space-x-2 my-4'>
+  <div>
+    <form>
+      <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+      <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+          </svg>
+        </div>
+        <input type="search" id="default-search" class="block w-full ps-10 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required>
+      </div>
+    </form>
+  </div>
+  <div>
+    <%= link_to 'New', new_product_path, class: 'inline-flex items-center px-4 py-2 font-medium text-blue-800 bg-transparent border rounded-lg border-blue-800 hover:bg-blue-800 hover:text-white focus:z-10 focus:ring-2 focus:ring-blue-500 focus:bg-blue-800 focus:text-white dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-700 dark:focus:bg-blue-700' %>
+  </div>
+</div>
+
+<div class="relative overflow-x-auto border dark:border-gray-600 rounded-lg">
+  <table class="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          ID
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Name
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Quantity
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Price
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Created at
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Updated at
+        </th>
+        <th scope="col" class="px-6 py-3 text-center">
+          Action
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <td class="px-6 py-4 font-medium">
+            <%= product.id %>
+          </td>
+          <td class="px-6 py-4">
+            <%= product.name %>
+          </td>
+          <td class="px-6 py-4">
+            <%= product.quantity %>
+          </td>
+          <td class="px-6 py-4">
+            <%= product.price %>
+          </td>
+          <td class="px-6 py-4">
+            <%= product.created_at %>
+          </td>
+          <td class="px-6 py-4">
+            <%= product.updated_at %>
+          </td>
+          <td class="px-6 py-4 flex justify-center">
+            <div class="inline-flex space-x-2">
+              <%= link_to 'Show', product_path(product), class: 'inline-flex items-center px-4 py-2 font-medium text-blue-800 bg-transparent border rounded-lg border-blue-800 hover:bg-blue-800 hover:text-white focus:z-10 focus:ring-2 focus:ring-blue-500 focus:bg-blue-800 focus:text-white dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-700 dark:focus:bg-blue-700' %>
+              <%= link_to 'Edit', edit_product_path(product), class: 'inline-flex items-center px-4 py-2 font-medium text-green-800 bg-transparent border rounded-lg border-green-800 hover:bg-green-800 hover:text-white focus:z-10 focus:ring-2 focus:ring-green-500 focus:bg-green-800 focus:text-white dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-700 dark:focus:bg-green-700' %>
+              <%= link_to 'Delete', product_path(product), data: { "turbo-method": :delete, confirm: 'Are you sure!' }, class: 'inline-flex items-center px-4 py-2 font-medium text-red-800 bg-transparent border rounded-lg border-red-800 hover:bg-red-800 hover:text-white focus:z-10 focus:ring-2 focus:ring-red-500 focus:bg-red-800 focus:text-white dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-700 dark:focus:bg-red-700' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
