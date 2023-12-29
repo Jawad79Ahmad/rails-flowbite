@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   before_action :set_categories, only: %i[new create edit update]
 
   def index
-    @products = Product.all
+    @q = Product.includes(:category).order(name: :asc).ransack(params[:q])
+    @products = @q.result(distinct: true).page(params[:page]).per(100)
   end
 
   def show
